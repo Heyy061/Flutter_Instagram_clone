@@ -2,7 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:instagram_clone/bottomIcon.dart';
 import 'package:instagram_clone/statusPage.dart' show StatusPage;
+import 'Page/ProfilePage.dart' show ProfilePage;
+import 'Page/ReelPage.dart' show ReelPage;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     'Colombina',
     'Hutao',
   ];
+  final List<Widget> pages = [ProfilePage(), ReelPage(), HomePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +107,35 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           },
+        ),
+      ),
+
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return pages[];
+              },
+            ),
+          );
+        },
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Bottomicon1(icon1: Icons.home),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Bottomicon1(icon1: Icons.search),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Bottomicon1(icon1: Icons.person),
+              label: '',
+            ),
+            // BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          ],
         ),
       ),
     );
