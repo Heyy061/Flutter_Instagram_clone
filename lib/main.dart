@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/homePage.dart' show HomePage;
+import 'package:instagram_clone/screenPage.dart' show ScreenPage;
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
     theme: ThemeData.light(),
-    home: HomePage(),
+    home: ScreenPage(),
     );
 
   }

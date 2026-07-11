@@ -1,12 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:instagram_clone/bottomIcon.dart';
 import 'package:instagram_clone/statusPage.dart' show StatusPage;
-import 'Page/ProfilePage.dart' show ProfilePage;
-import 'Page/ReelPage.dart' show ReelPage;
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,23 +8,22 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final List<String> image = [
-    'assets/image/mauvika.webp',
-    'assets/image/citlai.webp',
-    'assets/image/Keqing1.webp',
-    'assets/image/Bina.webp',
-    'assets/image/Hutao1.jpg',
-  ];
-  final List<String> name = [
-    'Mauvika',
-    'Citlali',
-    'Keqing',
-    'Colombina',
-    'Hutao',
-  ];
-  final List<Widget> pages = [ProfilePage(), ReelPage(), HomePage()];
+final List<String> image = [
+  'assets/image/mauvika.webp',
+  'assets/image/citlai.webp',
+  'assets/image/Keqing1.webp',
+  'assets/image/Bina.webp',
+  'assets/image/Hutao1.jpg',
+];
+final List<String> name = [
+  'Mauvika',
+  'Citlali',
+  'Keqing',
+  'Colombina',
+  'Hutao',
+];
 
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,8 +49,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
+      //body: pages[currentPage],
       body: SizedBox(
-        height: 124,
+        height: 126,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
 
@@ -99,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         SizedBox(height: 3),
-                        Text(name[index]),
+                        Text(name[index], style: TextStyle(fontSize: 17)),
                       ],
                     ),
                   ),
@@ -107,35 +100,6 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           },
-        ),
-      ),
-
-      bottomNavigationBar: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return pages[];
-              },
-            ),
-          );
-        },
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Bottomicon1(icon1: Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Bottomicon1(icon1: Icons.search),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Bottomicon1(icon1: Icons.person),
-              label: '',
-            ),
-            // BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          ],
         ),
       ),
     );

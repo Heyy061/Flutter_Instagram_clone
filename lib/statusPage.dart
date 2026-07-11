@@ -34,7 +34,7 @@ class _StatusPageState extends State<StatusPage> {
               padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 widget.name1,
-                style: TextStyle(fontWeight: FontWeight(550), fontSize: 22),
+                style: TextStyle(fontWeight: FontWeight(550), fontSize: 24),
               ),
             ),
             SizedBox(width: 120),
