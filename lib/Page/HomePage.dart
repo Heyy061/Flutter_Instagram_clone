@@ -9,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 final List<String> image = [
+  '',
   'assets/image/mauvika.webp',
   'assets/image/citlai.webp',
   'assets/image/Keqing1.webp',
@@ -16,6 +17,7 @@ final List<String> image = [
   'assets/image/Hutao1.jpg',
 ];
 final List<String> name = [
+  'Your story',
   'Mauvika',
   'Citlali',
   'Keqing',

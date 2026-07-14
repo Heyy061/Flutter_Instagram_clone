@@ -26,8 +26,8 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              // color: Colors.amber,
-              height: 180,
+              color: Colors.amber,
+              height: 170,
               child: Row(
                 children: [
                   SizedBox(width: 10),
@@ -46,10 +46,10 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
+                          padding: const EdgeInsets.only(top: 25.0),
                           child: Text(
-                            "Krishna Rana",
-                            style: TextStyle(fontSize: 22),
+                            "its_Heyy",
+                            style: TextStyle(fontSize: 24),
                           ),
                         ),
                         SizedBox(height: 12),
