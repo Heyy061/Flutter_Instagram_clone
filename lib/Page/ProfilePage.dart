@@ -8,13 +8,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: const Color.fromARGB(255, 202, 116, 31),
+        backgroundColor: const Color.fromARGB(255, 249, 248, 247),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(onPressed: () {}, icon: Icon(Icons.add), iconSize: 30),
             SizedBox(width: 82),
-            Text("Heyy_061"),
+            Text("Heyy_061", style: TextStyle(fontSize: 26)),
             Spacer(),
             IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
           ],
@@ -26,8 +26,8 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Colors.amber,
-              height: 170,
+              //color: Colors.amber,
+              height: 150,
               child: Row(
                 children: [
                   SizedBox(width: 10),
@@ -47,10 +47,7 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 25.0),
-                          child: Text(
-                            "its_Heyy",
-                            style: TextStyle(fontSize: 24),
-                          ),
+                          child: Text("Heyy", style: TextStyle(fontSize: 24)),
                         ),
                         SizedBox(height: 12),
                         Row(
@@ -67,6 +64,27 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          SizedBox(height: 0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                boxes(name: "Edit Profile"),
+                SizedBox(width: 20),
+                boxes(name: "Shared Profile"),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: .spaceAround,
+            children: [
+              myuploads(ic: Icons.photo_camera_outlined),
+              myuploads(ic: Icons.video_camera_back_outlined),
+              myuploads(ic: Icons.tag_outlined),
+            ],
           ),
         ],
       ),

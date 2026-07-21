@@ -32,9 +32,9 @@ class _ScreenPageState extends State<ScreenPage> {
           });
         },
         tabs: [
-          GButton(icon: Icons.home, text: 'Home'),
+          GButton(icon: Icons.home_outlined, text: 'Home'),
           GButton(icon: Icons.search, text: 'Search'),
-          GButton(icon: Icons.person, text: 'Profile'),
+          GButton(icon: Icons.person_outlined, text: 'Profile'),
         ],
       ),
     );
