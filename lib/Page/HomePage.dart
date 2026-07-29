@@ -23,7 +23,7 @@ final List<String> name = [
   'Citlali',
   'Keqing',
   'Colombina',
-  'Hutao',
+  //'Hutao',
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               //color: Colors.amber,
               border: Border(
                 bottom: BorderSide(
-                  color: const Color.fromARGB(255, 230, 229, 229),
+                  color: const Color.fromARGB(255, 219, 217, 217),
                 ), //to hilight the bottom line
               ),
             ),
@@ -120,10 +120,15 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 8),
           Expanded(
             child: ListView.builder(
-              itemCount: 1,
               scrollDirection: Axis.vertical,
+              itemCount: name.length,
               itemBuilder: (context, index) {
-                return Column(children: [slots(), SizedBox(height: 5)]);
+                return Column(
+                  children: [
+                    slots(index1: index, name1: name[index]),
+                    SizedBox(height: 5),
+                  ],
+                );
               },
             ),
           ),

@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
-class slots extends StatelessWidget {
-  const slots({super.key});
+import 'HomePage.dart' show image, name;
 
+class slots extends StatefulWidget {
+  final int index1;
+  final String name1;
+  const slots({super.key, required this.index1, required this.name1});
+
+  @override
+  State<slots> createState() => _slotsState();
+}
+
+class _slotsState extends State<slots> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,12 +28,12 @@ class slots extends StatelessWidget {
                   vertical: 4,
                 ),
                 child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/image/Bina.webp'),
+                  backgroundImage: AssetImage(image[widget.index1]),
                 ),
               ),
 
               Text(
-                "Coloumbina",
+                widget.name1,
                 style: TextStyle(
                   fontSize: 18,
                   color: const Color.fromARGB(255, 255, 255, 255),
@@ -37,7 +46,11 @@ class slots extends StatelessWidget {
                   height: 40,
                   width: 90,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 215, 206, 206),
+                    color: Colors.transparent,
+                    border: Border.all(
+                      width: 1.4,
+                      color: const Color.fromARGB(255, 246, 244, 244),
+                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextButton(
@@ -58,8 +71,54 @@ class slots extends StatelessWidget {
             color: Colors.amber,
             child: Text("PICTURE"),
           ),
-
           //////////////////////////////
+          SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ilcs(icon1: Icons.favorite_border_sharp),
+              SizedBox(width: 4),
+              ilcs(icon1: Icons.comment_bank_outlined),
+              SizedBox(width: 4),
+              ilcs(icon1: Icons.share_outlined),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 3.0),
+                child: ilcs(icon1: Icons.bookmark_border, size1: 35),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+///////////
+class ilcs extends StatelessWidget {
+  final IconData icon1;
+  final double size1;
+  // final VoidCallback onTap;
+  const ilcs({
+    super.key,
+    required this.icon1,
+    this.size1 = 32,
+    // required this.onTap,
+  }); // we set deafault size 24
+  //and dont use "required" cuz it say this parameter must to give
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {
+              // onTap;
+            },
+            icon: Icon(icon1, size: size1),
+          ),
         ],
       ),
     );
