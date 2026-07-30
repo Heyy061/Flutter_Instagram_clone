@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: name.length,
+              itemCount: 1,
               itemBuilder: (context, index) {
                 return Column(
                   children: [

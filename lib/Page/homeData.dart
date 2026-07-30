@@ -15,7 +15,7 @@ class _slotsState extends State<slots> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: 380,
       color: Colors.red,
       child: Column(
         children: [
@@ -61,7 +61,7 @@ class _slotsState extends State<slots> {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
 
           ////////////////////
           //    image
@@ -72,7 +72,7 @@ class _slotsState extends State<slots> {
             child: Text("PICTURE"),
           ),
           //////////////////////////////
-          SizedBox(height: 5),
+          // SizedBox(height: 1),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -88,6 +88,11 @@ class _slotsState extends State<slots> {
               ),
             ],
           ),
+          Align(
+            alignment: AlignmentGeometry.topLeft,
+            child: Text("HELLO GOONERS"),
+          ),
+          Align(alignment: AlignmentGeometry.topLeft, child: Text("time")),
         ],
       ),
     );
@@ -104,7 +109,7 @@ class ilcs extends StatelessWidget {
     required this.icon1,
     this.size1 = 32,
     // required this.onTap,
-  }); // we set deafault size 24
+  }); // we set default size 24
   //and dont use "required" cuz it say this parameter must to give
 
   @override
@@ -119,6 +124,7 @@ class ilcs extends StatelessWidget {
             },
             icon: Icon(icon1, size: size1),
           ),
+          SizedBox(height: 5),
         ],
       ),
     );
