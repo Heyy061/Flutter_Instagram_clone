@@ -60,15 +60,23 @@ class boxes extends StatelessWidget {
   }
 }
 
-class myuploads extends StatelessWidget {
+class myuploads extends StatefulWidget {
   final IconData ic;
-  const myuploads({super.key, required this.ic});
+  final VoidCallback onTap1;
+  const myuploads({super.key, required this.ic,required this.onTap1});
 
+  @override
+  State<myuploads> createState() => _myuploadsState();
+}
+
+class _myuploadsState extends State<myuploads> {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [IconButton(onPressed: () {}, icon: Icon(ic), iconSize: 30)],
+      children: [
+        IconButton(onPressed: widget.onTap1, icon: Icon(widget.ic), iconSize: 28),
+      ],
     );
   }
 }

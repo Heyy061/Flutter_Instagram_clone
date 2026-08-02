@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/Page/profileData.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  List<String> posts = [];
+  List<String> reels = [];
+  List<String> tagged = [];
+
+  int selectIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,16 +88,93 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12),
+
           Row(
-            mainAxisAlignment: .spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              myuploads(ic: Icons.photo_camera_outlined),
-              myuploads(ic: Icons.video_camera_back_outlined),
-              myuploads(ic: Icons.tag_outlined),
+              myuploads(
+                onTap1: () {
+                  setState(() {
+                    selectIndex = 0;
+                  });
+                },
+                ic: Icons.grid_on,
+              ),
+              myuploads(
+                onTap1: () {
+                  setState(() {
+                    selectIndex = 1;
+                  });
+                },
+                ic: Icons.video_library_outlined,
+              ),
+              myuploads(
+                onTap1: () {
+                  setState(() {
+                    selectIndex = 2;
+                  });
+                },
+                ic: Icons.person_pin_outlined,
+              ),
             ],
+          ),
+          Expanded(
+            child: Builder(
+              builder: (context) {
+                if (selectIndex == 0 && posts.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Upload First Post",
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                              const Color.fromARGB(255, 62, 110, 194),
+                            ),
+                          ),
+                          child: Text(
+                            "Create",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (selectIndex == 1 && posts.isEmpty) {
+                  return Center(child: Text("Upload reel"));
+                } else if (selectIndex == 2 && posts.isEmpty) {
+                  return Center(child: Text("Tagged posts"));
+                } else {
+                  return Text("Fuck off");
+                }
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+// class myPRT extends StatefulWidget {
+//   final String te;
+//   final IconData cre;
+//   final VoidCallback press;
+//   const myPRT({super.key,required this.te, this.cre, this.press});
+
+//   @override
+//   State<myPRT> createState() => _myPRTState();
+// }
+
+// class _myPRTState extends State<myPRT> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return
+
+//   }
+// }

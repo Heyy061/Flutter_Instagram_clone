@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/Page/connectFireBase.dart';
 import 'package:instagram_clone/Page/homeData.dart';
 import 'package:instagram_clone/statusPage.dart' show StatusPage;
 
@@ -34,7 +35,16 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.add), iconSize: 27),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => connect()),
+                );
+              },
+              icon: Icon(Icons.add),
+              iconSize: 27,
+            ),
 
             Text(
               "Instagram",
