@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/Page/cam&gallary.dart';
 import 'package:instagram_clone/Page/profileData.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -136,7 +137,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           style: TextStyle(fontSize: 25),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return imageVideoAccess(text1: "New Post");
+                                },
+                              ),
+                            );
+                          },
                           style: ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(
                               const Color.fromARGB(255, 62, 110, 194),
