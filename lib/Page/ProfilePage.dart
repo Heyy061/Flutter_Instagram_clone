@@ -99,6 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   });
                 },
                 ic: Icons.grid_on,
+                isSelected: selectIndex == 0,
               ),
               myuploads(
                 onTap1: () {
@@ -107,7 +108,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   });
                 },
                 ic: Icons.video_library_outlined,
+                isSelected: selectIndex == 1,
               ),
+
               myuploads(
                 onTap1: () {
                   setState(() {
@@ -115,9 +118,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   });
                 },
                 ic: Icons.person_pin_outlined,
+                isSelected: selectIndex == 2,
               ),
             ],
           ),
+
           Expanded(
             child: Builder(
               builder: (context) {
@@ -138,7 +143,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           child: Text(
-                            "Create",
+                            "Upload",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -146,7 +151,29 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   );
                 } else if (selectIndex == 1 && posts.isEmpty) {
-                  return Center(child: Text("Upload reel"));
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Upload First Reel",
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                              const Color.fromARGB(255, 62, 110, 194),
+                            ),
+                          ),
+                          child: Text(
+                            "Upload",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 } else if (selectIndex == 2 && posts.isEmpty) {
                   return Center(child: Text("Tagged posts"));
                 } else {
@@ -160,21 +187,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-
-// class myPRT extends StatefulWidget {
-//   final String te;
-//   final IconData cre;
-//   final VoidCallback press;
-//   const myPRT({super.key,required this.te, this.cre, this.press});
-
-//   @override
-//   State<myPRT> createState() => _myPRTState();
-// }
-
-// class _myPRTState extends State<myPRT> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return
-
-//   }
-// }
