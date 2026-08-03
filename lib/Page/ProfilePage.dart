@@ -1,3 +1,5 @@
+import 'dart:io' show File;
+
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/Page/cam&gallary.dart';
 import 'package:instagram_clone/Page/profileData.dart';
@@ -10,7 +12,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  List<String> posts = [];
+  List<String> post = [];
   List<String> reels = [];
   List<String> tagged = [];
 
@@ -23,7 +25,19 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.add), iconSize: 30),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return imageVideoAccess(text1: "New Upload", post1: post);
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.add),
+              iconSize: 30,
+            ),
             SizedBox(width: 82),
             Text("Heyy_061", style: TextStyle(fontSize: 26)),
             Spacer(),
@@ -127,66 +141,120 @@ class _ProfilePageState extends State<ProfilePage> {
           Expanded(
             child: Builder(
               builder: (context) {
-                if (selectIndex == 0 && posts.isEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Upload First Post",
-                          style: TextStyle(fontSize: 25),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return imageVideoAccess(text1: "New Post");
-                                },
+                if (selectIndex == 0) {
+                  if (post.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Upload First Post",
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return imageVideoAccess(
+                                      text1: "New Post",
+                                      post1: post,
+                                    );
+                                  },
+                                ),
+                              );
+                              setState(() {});
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                const Color.fromARGB(255, 62, 110, 194),
                               ),
-                            );
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                              const Color.fromARGB(255, 62, 110, 194),
+                            ),
+                            child: Text(
+                              "Upload",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                          child: Text(
-                            "Upload",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return GridView.builder(
+                      itemCount: post.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 3,
+                            mainAxisSpacing: 3,
+                            crossAxisCount: 3,
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                } else if (selectIndex == 1 && posts.isEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Upload First Reel",
-                          style: TextStyle(fontSize: 25),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                              const Color.fromARGB(255, 62, 110, 194),
+                      itemBuilder: (context, index) {
+                        return Image.file(File(post[index]), fit: BoxFit.cover);
+                      },
+                    );
+                  }
+
+                  ////////////////////////////////////////////////////////////
+                } else if (selectIndex == 1) {
+                  if (reels.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Upload First Post",
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return imageVideoAccess(
+                                      text1: "New Reel",
+                                      post1: reels,
+                                    );
+                                  },
+                                ),
+                              );
+                              setState(() {});
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                const Color.fromARGB(255, 62, 110, 194),
+                              ),
+                            ),
+                            child: Text(
+                              "Upload",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                          child: Text(
-                            "Upload",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return GridView.builder(
+                      itemCount: 3,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                } else if (selectIndex == 2 && posts.isEmpty) {
+                      itemBuilder: (context, index) {
+                        // return Image.file(File(post[index]), fit: BoxFit.cover);
+                      },
+                    );
+                  }
+
+                  ///////////////////////////////////////////////////////////
+                } else if (selectIndex == 2 && post.isEmpty) {
                   return Center(child: Text("Tagged posts"));
                 } else {
-                  return Text("Fuck off");
+                  return Text("error");
                 }
               },
             ),
