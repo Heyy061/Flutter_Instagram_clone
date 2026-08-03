@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/Page/connectFireBase.dart';
-import 'package:instagram_clone/Page/homeData.dart';
+import 'package:instagram_clone/Page/fireBase/connectFireBase.dart';
+import 'package:instagram_clone/Page/HomePage/homeData.dart';
 import 'package:instagram_clone/statusPage.dart' show StatusPage;
 
 class HomePage extends StatefulWidget {

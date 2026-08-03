@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'Page/HomePage.dart' show HomePage;
-import 'Page/ProfilePage.dart' show ProfilePage;
-import 'Page/SearchPage.dart' show SearchPage;
+import 'Page/HomePage/HomePage.dart' show HomePage;
+import 'Page/ProfilePage/ProfilePage.dart' show ProfilePage;
+import 'Page/SearchPage/SearchPage.dart' show SearchPage;
 
 class ScreenPage extends StatefulWidget {
   const ScreenPage({super.key});

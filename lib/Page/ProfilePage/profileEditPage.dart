@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/Page/cam&gallary.dart';
+import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
 
 class editPage extends StatefulWidget {
   editPage({super.key});

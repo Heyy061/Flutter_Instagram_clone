@@ -1,9 +1,9 @@
 import 'dart:io' show File;
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/Page/cam&gallary.dart';
-import 'package:instagram_clone/Page/profileData.dart';
-import 'package:instagram_clone/Page/profileEditPage.dart';
+import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
+import 'package:instagram_clone/Page/ProfilePage/profileData.dart';
+import 'package:instagram_clone/Page/ProfilePage/profileEditPage.dart';
 
 import 'profileEditPage.dart' show editPage;
 
