@@ -3,6 +3,9 @@ import 'dart:io' show File;
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/Page/cam&gallary.dart';
 import 'package:instagram_clone/Page/profileData.dart';
+import 'package:instagram_clone/Page/profileEditPage.dart';
+
+import 'profileEditPage.dart' show editPage;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -96,9 +99,25 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                boxes(name: "Edit Profile"),
+                boxes(
+                  name: "Edit Profile",
+                  onClick1: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return editPage();
+                        },
+                      ),
+                    );
+                  },
+                ),
                 SizedBox(width: 20),
-                boxes(name: "Shared Profile"),
+                boxes(
+                  name: "Shared Profile",
+                  onClick1: () {
+                    editPage();
+                  },
+                ),
               ],
             ),
           ),
@@ -204,7 +223,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Upload First Post",
+                            "Upload First Reel",
                             style: TextStyle(fontSize: 25),
                           ),
                           ElevatedButton(
@@ -251,7 +270,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   }
 
                   ///////////////////////////////////////////////////////////
-                } else if (selectIndex == 2 && post.isEmpty) {
+                } else if (selectIndex == 2) {
                   return Center(child: Text("Tagged posts"));
                 } else {
                   return Text("error");

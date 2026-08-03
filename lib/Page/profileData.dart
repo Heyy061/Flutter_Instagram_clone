@@ -26,10 +26,16 @@ class ProfileData extends StatelessWidget {
   }
 }
 
-class boxes extends StatelessWidget {
+class boxes extends StatefulWidget {
   final String name;
-  const boxes({super.key, required this.name});
+  final VoidCallback onClick1;
+  const boxes({super.key, required this.name, required this.onClick1});
 
+  @override
+  State<boxes> createState() => _boxesState();
+}
+
+class _boxesState extends State<boxes> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,9 +51,9 @@ class boxes extends StatelessWidget {
             overlayColor: WidgetStatePropertyAll(Colors.transparent),
           ),
 
-          onPressed: () {},
+          onPressed: widget.onClick1,
           child: Text(
-            name,
+            widget.name,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight(500),
