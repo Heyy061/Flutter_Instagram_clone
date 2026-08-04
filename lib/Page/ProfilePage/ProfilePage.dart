@@ -18,6 +18,10 @@ class _ProfilePageState extends State<ProfilePage> {
   List<String> post = [];
   List<String> reels = [];
   List<String> tagged = [];
+  String name1 = "Heyy";
+  String userName1 = "Heyy_061";
+  String bio1 = "Hello";
+  String gender1 = "";
 
   int selectIndex = 0;
   @override
@@ -42,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
               iconSize: 30,
             ),
             SizedBox(width: 82),
-            Text("Heyy_061", style: TextStyle(fontSize: 26)),
+            Text(userName1, style: TextStyle(fontSize: 26)),
             Spacer(),
             IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
           ],
@@ -75,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 25.0),
-                          child: Text("Heyy", style: TextStyle(fontSize: 24)),
+                          child: Text(name1, style: TextStyle(fontSize: 24)),
                         ),
                         SizedBox(height: 12),
                         Row(
@@ -101,14 +105,22 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 boxes(
                   name: "Edit Profile",
-                  onClick1: () {
-                    Navigator.of(context).push(
+                  onClick1: () async {
+                    final result = await Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
                           return editPage();
                         },
                       ),
                     );
+                    if (result != null) {
+                      setState(() {
+                        name1 = result["Name"];
+                        userName1 = result["UserName"];
+                        bio1 = result["Bio"];
+                        gender1 = result["Gender"];
+                      });
+                    }
                   },
                 ),
                 SizedBox(width: 20),
