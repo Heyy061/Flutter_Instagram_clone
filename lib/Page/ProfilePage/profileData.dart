@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class ProfileData extends StatelessWidget {
   final int noPosts;
   final String info;

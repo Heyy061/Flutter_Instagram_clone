@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instagram_clone/firebase_options.dart'
     show DefaultFirebaseOptions;
 import 'package:instagram_clone/screenPage.dart' show ScreenPage;
@@ -7,7 +8,8 @@ import 'package:instagram_clone/screenPage.dart' show ScreenPage;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

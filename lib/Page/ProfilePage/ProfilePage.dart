@@ -4,24 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
 import 'package:instagram_clone/Page/ProfilePage/profileData.dart';
 import 'package:instagram_clone/Page/ProfilePage/profileEditPage.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'profileEditPage.dart' show editPage;
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  ConsumerState<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends ConsumerState<ProfilePage> {
   List<String> post = [];
   List<String> reels = [];
   List<String> tagged = [];
-  String name1 = "Heyy";
-  String userName1 = "Heyy_061";
-  String bio1 = "Hello";
-  String gender1 = "";
+  // String name1 = "Heyy";
+  // String userName1 = "Heyy_061";
+  // String bio1 = "Hello";
+  // String gender1 = "";
+
 
   int selectIndex = 0;
   @override
@@ -46,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
               iconSize: 30,
             ),
             SizedBox(width: 82),
-            Text(userName1, style: TextStyle(fontSize: 26)),
+            Text(userName, style: TextStyle(fontSize: 26)),
             Spacer(),
             IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
           ],

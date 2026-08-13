@@ -1,18 +1,20 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:instagram_clone/Page/HomePage/HomePage.dart';
 import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
+import 'package:instagram_clone/Page/ProfilePage/provider.dart';
 
-class editPage extends StatefulWidget {
+class editPage extends ConsumerStatefulWidget {
   editPage({super.key});
 
   @override
-  State<editPage> createState() => _editPageState();
+  ConsumerState<editPage> createState() => _editPageState();
   final List<String> proPic = [];
 }
 
-class _editPageState extends State<editPage> {
+class _editPageState extends ConsumerState<editPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController BioController = TextEditingController();
@@ -28,13 +30,14 @@ class _editPageState extends State<editPage> {
             Spacer(),
             TextButton(
               onPressed: () async {
-                Navigator.pop(context, {
-                  "Name": nameController.text,   /// that sucks 
-                  "UserName": userNameController.text,
-                  "Bio": BioController.text,
-                  "Gender": GenderController.text,
-                });
-              },
+                ref
+                    .read(profileProvider.notifier)
+                    .updateProfile(
+                      name1: nameController.text,
+                      userName1: userNameController.text,
+                      bio1: BioController.text,
+                    );
+              }, //updateProfile the the funx we created
               child: Text("Done", style: TextStyle(fontSize: 20)),
             ),
           ],
