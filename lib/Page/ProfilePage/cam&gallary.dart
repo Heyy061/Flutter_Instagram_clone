@@ -27,7 +27,7 @@ class _imageVideoAccessState extends State<imageVideoAccess> {
   File?
   selectedImage; //store a file/image/video in a varible named selectedImage
 
-  Future<void> PickGallery() async {
+  Future<void> pickGallery() async {
     final XFile? image1 = await _open.pickImage(
       source: ImageSource.gallery,
     ); //XFile is a class
@@ -102,7 +102,7 @@ class _imageVideoAccessState extends State<imageVideoAccess> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  PickGallery();
+                  pickGallery();
                 },
                 child: Icon(Icons.photo, size: 25),
               ),

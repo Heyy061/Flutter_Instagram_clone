@@ -8,21 +8,22 @@ class ProfileNotifer extends Notifier<Map<String, String>> {
   Map<String, String> build() {
     return {
       ///intially wht display on screen
-      'Name': "Heyyyyyyy",
+      'Name': "Heyy",
       'UserName': "Heyy_061",
       'Bio': "Helloo",
       'Gender': "He/Him",
+      'ProfileImage':'',
     };
   }
 
   void updateProfile({
     required String name1,
     required  String userName1,
-     required  String bio1
+     required  String bio1,
+     String? profileImage1
   }){
 
-    
-    state = {'Name': name1, 'UserName': userName1, 'Bio': bio1};
+    state = {'Name': name1, 'UserName': userName1, 'Bio': bio1,'ProfileImage':profileImage1??''};
   }
 }
 

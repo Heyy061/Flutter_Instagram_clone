@@ -6,6 +6,7 @@ import 'package:instagram_clone/Page/ProfilePage/profileData.dart';
 import 'package:instagram_clone/Page/ProfilePage/profileEditPage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'profileEditPage.dart' show editPage;
+import 'provider.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -18,15 +19,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   List<String> post = [];
   List<String> reels = [];
   List<String> tagged = [];
-  // String name1 = "Heyy";
-  // String userName1 = "Heyy_061";
-  // String bio1 = "Hello";
-  // String gender1 = "";
-
 
   int selectIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final profile = ref.watch(profileProvider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 249, 248, 247),
@@ -47,7 +44,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               iconSize: 30,
             ),
             SizedBox(width: 82),
-            Text(userName, style: TextStyle(fontSize: 26)),
+            Text(profile['UserName'] ?? "", style: TextStyle(fontSize: 26)),
             Spacer(),
             IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
           ],
@@ -69,7 +66,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     backgroundColor: Color.fromRGBO(182, 54, 163, 1),
                     child: CircleAvatar(
                       radius: 45,
-                      backgroundImage: AssetImage('assets/image/Miku.jpeg'),
+                      backgroundImage: AssetImage(profile['ProfileImage']),
                     ),
                   ),
                   SizedBox(width: 20),
@@ -80,14 +77,20 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 25.0),
-                          child: Text(name1, style: TextStyle(fontSize: 24)),
+                          child: Text(
+                            profile['Name'] ?? "",
+                            style: TextStyle(fontSize: 24),
+                          ),
                         ),
                         SizedBox(height: 12),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ProfileData(noPosts: 2, info: "posts"),
-                            ProfileData(noPosts: 20, info: "follower"),
+                            ProfileData(noPosts: post.length, info: "posts"),
+                            ProfileData(
+                              noPosts: post.length * 20,
+                              info: "follower",
+                            ),
                             ProfileData(noPosts: 20, info: "following"),
                           ],
                         ),
@@ -107,21 +110,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 boxes(
                   name: "Edit Profile",
                   onClick1: () async {
-                    final result = await Navigator.of(context).push(
+                    await Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
                           return editPage();
                         },
                       ),
                     );
-                    if (result != null) {
-                      setState(() {
-                        name1 = result["Name"];
-                        userName1 = result["UserName"];
-                        bio1 = result["Bio"];
-                        gender1 = result["Gender"];
-                      });
-                    }
                   },
                 ),
                 SizedBox(width: 20),
@@ -277,7 +272,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                             crossAxisCount: 3,
                           ),
                       itemBuilder: (context, index) {
-                        // return Image.file(File(post[index]), fit: BoxFit.cover);
+                        return Image.file(File(post[index]), fit: BoxFit.cover);
                       },
                     );
                   }
