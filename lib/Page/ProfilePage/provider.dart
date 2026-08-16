@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart'
     show Notifier, NotifierProvider, Ref;
-import 'package:instagram_clone/Page/HomePage/HomePage.dart';
+
 
 class ProfileNotifer extends Notifier<Map<String, String>> {
   @override

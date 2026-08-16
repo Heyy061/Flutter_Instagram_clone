@@ -1,11 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart'
     show XFile, ImageSource, ImagePicker;
-import 'package:instagram_clone/Page/HomePage/HomePage.dart';
-import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
 import 'package:instagram_clone/Page/ProfilePage/provider.dart';
 
 class editPage extends ConsumerStatefulWidget {
@@ -17,16 +14,16 @@ class editPage extends ConsumerStatefulWidget {
 }
 
 class _editPageState extends ConsumerState<editPage> {
-  File? selectedImage;
+
   TextEditingController nameController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController BioController = TextEditingController();
   TextEditingController GenderController = TextEditingController();
 
-  Future<void> pickGallery() async {
+  File? selectedImage;
+  Future<void> pickGallery1() async {
     final ImagePicker _open =
         ImagePicker(); //let u app access the phone gallary and camera
-    File? selectedImage;
     final XFile? image1 = await _open.pickImage(
       source: ImageSource.gallery,
     ); //XFile is a class
@@ -71,7 +68,7 @@ class _editPageState extends ConsumerState<editPage> {
             // color: Colors.amberAccent,
             child: Center(
               child: GestureDetector(
-                onTap: pickGallery,
+                onTap: pickGallery1,
                 child: CircleAvatar(
                   radius: 50,
                   backgroundColor: const Color.fromARGB(255, 117, 157, 180),
@@ -124,4 +121,3 @@ class _boxState extends State<box> {
     );
   }
 }
-//////next day:- input [name,bio,userName,photo]here and when click done changes happened at profile page

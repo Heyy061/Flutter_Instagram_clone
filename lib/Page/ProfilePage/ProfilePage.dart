@@ -7,6 +7,13 @@ import 'package:instagram_clone/Page/ProfilePage/profileEditPage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'profileEditPage.dart' show editPage;
 import 'provider.dart';
+import 'package:share_plus/share_plus.dart';
+
+/////////////////////////////////////////////
+void shareProfile() {
+  SharePlus.instance.share(ShareParams());
+}
+////////////////////////////////////////////
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -23,7 +30,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   int selectIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final profile = ref.watch(profileProvider);
+    //////////////////////////////////////////////
+    final profilePP = ref.watch(profileProvider);
+    ////////////////////////////////////////////////
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 249, 248, 247),
@@ -44,7 +54,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               iconSize: 30,
             ),
             SizedBox(width: 82),
-            Text(profile['UserName'] ?? "", style: TextStyle(fontSize: 26)),
+            Text(
+              profilePP['UserName'] ?? "Heyy_061",
+              style: TextStyle(fontSize: 26),
+            ),
             Spacer(),
             IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
           ],
@@ -66,9 +79,17 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     backgroundColor: Color.fromRGBO(182, 54, 163, 1),
                     child: CircleAvatar(
                       radius: 45,
-                      backgroundImage: AssetImage(profile['ProfileImage']),
+                      backgroundImage: profilePP['ProfileImage'] != null
+                          ? FileImage(
+                              File(
+                                profilePP['ProfileImage'] ??
+                                    'assets/image/Miku.jpeg',
+                              ),
+                            )
+                          : null,
                     ),
                   ),
+
                   SizedBox(width: 20),
 
                   Expanded(
@@ -78,21 +99,23 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         Padding(
                           padding: const EdgeInsets.only(top: 25.0),
                           child: Text(
-                            profile['Name'] ?? "",
+                            profilePP['Name'] ?? "Heyy",
                             style: TextStyle(fontSize: 24),
                           ),
                         ),
                         SizedBox(height: 12),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ProfileData(noPosts: post.length, info: "posts"),
-                            ProfileData(
-                              noPosts: post.length * 20,
-                              info: "follower",
-                            ),
-                            ProfileData(noPosts: 20, info: "following"),
-                          ],
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ProfileData(noPosts: post.length, info: "posts"),
+                              ProfileData(
+                                noPosts: post.length * 20,
+                                info: "follower",
+                              ),
+                              ProfileData(noPosts: 20, info: "following"),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -120,11 +143,15 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   },
                 ),
                 SizedBox(width: 20),
-                boxes(
-                  name: "Shared Profile",
-                  onClick1: () {
-                    editPage();
-                  },
+                Expanded(
+                  child: boxes(
+                    name: "Share Profile",
+
+                    onClick1: () {
+                      print("HELLLLOOO ");
+                      shareProfile();
+                    },
+                  ),
                 ),
               ],
             ),
