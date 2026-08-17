@@ -5,6 +5,8 @@ import 'package:instagram_clone/Page/ProfilePage/cam&gallary.dart';
 import 'package:instagram_clone/Page/ProfilePage/profileData.dart';
 import 'package:instagram_clone/Page/ProfilePage/profileEditPage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instagram_clone/Page/ProfilePage/threeLine.dart'
+    show headerIcon;
 import 'profileEditPage.dart' show editPage;
 import 'provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -59,7 +61,18 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               style: TextStyle(fontSize: 26),
             ),
             Spacer(),
-            IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return headerIcon();
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.menu),
+            ),
           ],
         ),
       ),
@@ -144,14 +157,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 ),
                 SizedBox(width: 20),
                 Expanded(
-                  child: boxes(
-                    name: "Share Profile",
-
-                    onClick1: () {
-                      print("HELLLLOOO ");
-                      shareProfile();
-                    },
-                  ),
+                  child: boxes(name: "Share Profile", onClick1: () {}),
                 ),
               ],
             ),

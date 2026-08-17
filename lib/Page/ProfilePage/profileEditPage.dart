@@ -10,7 +10,7 @@ class editPage extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<editPage> createState() => _editPageState();
-  final List<String> proPic = [];
+ 
 }
 
 class _editPageState extends ConsumerState<editPage> {

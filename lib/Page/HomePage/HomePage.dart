@@ -1,35 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:instagram_clone/Page/ProfilePage/provider.dart';
 import 'package:instagram_clone/Page/fireBase/connectFireBase.dart';
 import 'package:instagram_clone/Page/HomePage/homeData.dart';
 import 'package:instagram_clone/statusPage.dart' show StatusPage;
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
+class _HomePageState extends ConsumerState<HomePage> {
 
-final List<String> image = [
-  '',
-  'assets/image/mauvika.webp',
-  'assets/image/citlai.webp',
-  'assets/image/Keqing1.webp',
-  'assets/image/Bina.webp',
-  'assets/image/Hutao1.jpg',
-];
-final List<String> name = [
-  'Your story',
-  'Mauvika',
-  'Citlali',
-  'Keqing',
-  'Colombina',
-  //'Hutao',
-];
-
-class _HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,) {
+    ///////////////////////////////////////////
+     final PP = ref.watch(profileProvider);
+     /////////////////////////////////////////////
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -147,3 +135,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+final List<String> image = [
+  ''
+  'assets/image/mauvika.webp',
+  'assets/image/citlai.webp',
+  'assets/image/Keqing1.webp',
+  'assets/image/Bina.webp',
+  'assets/image/Hutao1.jpg',
+];
+final List<String> name = [
+  'Your story',
+  'Mauvika',
+  'Citlali',
+  'Keqing',
+  'Colombina',
+  //'Hutao',
+];
